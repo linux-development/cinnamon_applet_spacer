@@ -4,11 +4,12 @@
     "description" : "Spacer settings"
  },
  "width": {
-    "type": "scale",
+    "type": "spinbutton",
     "default" : 10,
     "min" : 2,
     "max" : 400,
     "step" : 1,
+    "units" : "pixels",
     "description" : "Amount of space in pixels",
     "tooltip" : "Adjust this to increase or decrease the width of this spacer"
  }
