@@ -1,17 +1,17 @@
 {
- "head" : {
-    "type" : "header",
-    "description" : "Spacer settings"
- },
- "width": {
-    "type": "spinbutton",
-    "default" : 10,
-    "min" : 2,
-    "max" : 400,
-    "step" : 1,
-    "units" : "pixels",
-    "description" : "Amount of space in pixels",
-    "tooltip" : "Adjust this to increase or decrease the width of this spacer"
- }
+    "head": {
+        "type": "header",
+        "description": "Settings"
+    },
+    "width": {
+        "type": "spinbutton",
+        "default": 10,
+        "min": 2,
+        "max": 400,
+        "step": 1,
+        "units": "pixels",
+        "description": "Spacer width",
+        "tooltip": ""
+    }
 }
 
