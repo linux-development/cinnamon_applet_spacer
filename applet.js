@@ -11,6 +11,8 @@
 *
 * You should have received a copy of the GNU General Public License
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+*
+* This code is based on spacer@cinnamon.org applet.
 */
 
 const Applet = imports.ui.applet;
@@ -19,7 +21,7 @@ const Settings = imports.ui.settings;
 
 class SpacerApplet extends Applet.Applet {
 
-    // default methods
+    // standard methods
 
     constructor(metadata, orientation, panelHeight, instance_id) {
         super(orientation, panelHeight, instance_id);
@@ -41,32 +43,44 @@ class SpacerApplet extends Applet.Applet {
             // configure applet
             this.setAllowedLayout(Applet.AllowedLayout.BOTH);
             this.actor.track_hover = false;
-            this.actor.styleClass += " spacer-applet";
+            this.actor.add_style_class_name('spacer-applet');
+            // create state and set default values
+            this.state = {
+                'orientation': orientation
+            };
+            // create a storage for settings
+            this.settings = {
+                'width': 0
+            };
             // bind settings
-            this.settings = new Settings.AppletSettings(this, metadata.uuid, this.instance_id);
-            this.settings.bind("width", "width", this.handleSettings);
-            // set orientation and apply settings
-            this.handleOrientation(orientation);
+            this.appletSettings = new Settings.AppletSettings(this.settings, metadata.uuid, this.instance_id);
+            this.appletSettings.bind('width', 'width', () => this.handleSettings());
+            // apply settings
+            this.handleSettings();
         } catch (e) {
             global.logError(e);
         }
     }
 
-    handleOrientation(orientation) {
-        this.orientation = orientation;
-        this.handleSettings();
-    }
-
     handleSettings() {
-        if (this.orientation == St.Side.TOP || this.orientation == St.Side.BOTTOM) {
-            this.actor.width = this.width;
+        if (this.state.orientation == St.Side.TOP || this.state.orientation == St.Side.BOTTOM) {
+            this.actor.width = this.settings.width;
         } else {
-            this.actor.height = this.width;
+            this.actor.height = this.settings.width;
         }
     }
 
+    handleOrientation(orientation) {
+        this.state.orientation = orientation;
+        this.handleSettings();
+    }
+
     handleRemoveFromPanel() {
-        this.settings.finalize();
+        try {
+            this.appletSettings.finalize();
+        } catch (e) {
+            global.logError(e);
+        }
     }
 
 }

@@ -1,7 +1,9 @@
 {
- "uuid": "spacer@chepkun",
- "name": "ChepKun - Spacer",
- "description": "Add some space between your other applets",
- "icon": "view-restore",
- "max-instances": -1
+    "uuid": "spacer@chepkun",
+    "name": "ChepKun - Spacer",
+    "icon": "view-restore",
+    "max-instances": -1,
+    "version": "1.0",
+    "website": "https://github.com/linux-development/cinnamon_applet_spacer",
+    "description": "Helps to add some space between your applets in the panel."
 }
