@@ -23,8 +23,8 @@ class SpacerApplet extends Applet.Applet {
 
     // standard methods
 
-    constructor(metadata, orientation, panelHeight, instance_id) {
-        super(orientation, panelHeight, instance_id);
+    constructor(metadata, orientation, panelHeight, instanceId) {
+        super(orientation, panelHeight, instanceId);
         this.handleInit(metadata, orientation);
     }
 
@@ -85,6 +85,6 @@ class SpacerApplet extends Applet.Applet {
 
 }
 
-function main(metadata, orientation, panelHeight, instance_id) {
-    return new SpacerApplet(metadata, orientation, panelHeight, instance_id);
+function main(metadata, orientation, panelHeight, instanceId) {
+    return new SpacerApplet(metadata, orientation, panelHeight, instanceId);
 }
