@@ -42,7 +42,7 @@ class SpacerApplet extends Applet.Applet {
         try {
             // configure applet
             this.setAllowedLayout(Applet.AllowedLayout.BOTH);
-            this.actor.track_hover = false;
+            this.actor.set_track_hover(false);
             this.actor.add_style_class_name('spacer-applet');
             // create state and set default values
             this.state = {
